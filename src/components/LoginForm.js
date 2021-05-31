@@ -1,4 +1,5 @@
 import React, {useState} from 'react';
+import { Button,TextField } from '@material-ui/core';
 
 const LoginForm = ({Login, error}) => {
     const[details,setDetails] = useState({name:"", email:"", password:""});
@@ -14,8 +15,8 @@ const LoginForm = ({Login, error}) => {
               <h2>Login</h2>
               {(error != "")? ( <div className="error">{error}</div>) : ""}
               <div className="form-group">
-                  <label htmlFor="name">Name:</label>
-                  <input type="text" name="name" id="name" onChange={e => setDetails({...details,name:e.target.value})} value={details.name}/>
+                 
+                  <TextField label="Namegi" type="text" name="name" id="name" onChange={e => setDetails({...details,name:e.target.value})} value={details.name}/>
               </div>
               <div className="form-group">
                   <label htmlFor="email">Email:</label>
@@ -26,6 +27,7 @@ const LoginForm = ({Login, error}) => {
                   <input type="password" name="password" id="password" onChange={e => setDetails({...details, password: e.target.value})} value={details.password}/>
               </div>
               <input type="submit" value="LOGIN" />
+              <Button color="primary" variant="contained">Hello World</Button>
               </div> 
        </form>
     )

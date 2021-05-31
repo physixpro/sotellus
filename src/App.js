@@ -2,10 +2,13 @@ import logo from './logo.svg';
 import './App.css';
 import React, {useState} from 'react';
 import LoginForm from "./components/LoginForm";
+import Quotes from "./components/Quotes";
+
+
 function App() {
   const adminUser = {
     email: "admin@admin.com",
-    password: "admin123"
+    password: "123"
   }
 
   const[user,setUser]=useState({name:"",email:""});
@@ -35,6 +38,9 @@ function App() {
    {(user.email != "") ? (
      <div className="welcome">
        <h2>Welcome, <span>{user.name}</span></h2>
+
+       <Quotes />
+
        <button onClick = {Logout}>Logout</button>
      </div>
    ) : (
