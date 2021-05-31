@@ -13,21 +13,21 @@ const LoginForm = ({Login, error}) => {
        <form onSubmit={submitHandler}>
           <div className="form-inner">
               <h2>Login</h2>
-              {(error != "")? ( <div className="error">{error}</div>) : ""}
+              {(error !== "")? ( <div className="error">{error}</div>) : ""}
               <div className="form-group">
                  
-                  <TextField label="Namegi" type="text" name="name" id="name" onChange={e => setDetails({...details,name:e.target.value})} value={details.name}/>
+                  <TextField label="name" type="text" name="name" id="name" onChange={e => setDetails({...details,name:e.target.value})} value={details.name}/>
               </div>
               <div className="form-group">
-                  <label htmlFor="email">Email:</label>
-                  <input type="email" name="email" id="email" onChange={e => setDetails({...details,email:e.target.value})} value={details.email}/>
+                  
+                  <TextField label="email" type="email" name="email" id="email" onChange={e => setDetails({...details,email:e.target.value})} value={details.email}/>
               </div>
               <div className="form-group">
-                  <label htmlFor="password">Password:</label>
-                  <input type="password" name="password" id="password" onChange={e => setDetails({...details, password: e.target.value})} value={details.password}/>
+                
+                  <TextField label="password" type="password" name="password" id="password" onChange={e => setDetails({...details, password: e.target.value})} value={details.password}/>
               </div>
-              <input type="submit" value="LOGIN" />
-              <Button color="primary" variant="contained">Hello World</Button>
+              
+              <Button color="primary" variant="contained" type="submit" value="LOGIN">Hello World</Button>
               </div> 
        </form>
     )
