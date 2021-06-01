@@ -3,6 +3,8 @@ import PostUser from "../components/PostUser";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { Button,TextField } from "@material-ui/core";
+import Icon from '@material-ui/core/Icon';
+import DeleteIcon from '@material-ui/icons/Delete';
 import axios from "axios";
 
 
@@ -36,6 +38,8 @@ const Quotes = () => {
   };
   return (
     <div>
+
+      
        <PostUser acceptNewQuote={acceptNewQuote} />
        <h1 className="quotes">
         Good Morning! Here's your daily dose of everything that is football.
@@ -46,7 +50,14 @@ const Quotes = () => {
           <li> <img src={quote.url}
            alt="" /></li>
 
-<Button onClick={deleteNotification}>Delete User</Button>
+
+<Button onClick={deleteNotification}
+        variant="contained"
+        color="primary"
+        color="secondary"
+        endIcon={<DeleteIcon />}
+      >Delete Entry</Button>
+
         </ul>
 
         
