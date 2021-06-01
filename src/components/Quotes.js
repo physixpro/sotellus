@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from "react";
+import PostUser from "../components/PostUser";
 import axios from "axios";
 
 
 const Quotes = () => {
-
 
 
   useEffect(() => {
@@ -14,7 +14,7 @@ const Quotes = () => {
        
       );
       const quotes = res.data;
-      setQuotes(quotes);
+      setQuotes(quotes.slice(0,4));
       console.log(quotes);
     };
     getQuotes();
@@ -22,12 +22,18 @@ const Quotes = () => {
 
   const [quotes, setQuotes] = useState([]);
 
+ const acceptNewQuote = (newQuote) => {
+   // setQuotes automatically triggers a re-render in React
+    setQuotes([...quotes, newQuote])
+  }
+
   return (
     <div>
+       <PostUser acceptNewQuote={acceptNewQuote} />
        <h1 className="quotes">
         Good Morning! Here's your daily dose of everything that is football.
       </h1>
-      {quotes.slice(0,4).map((quote,index)=> (
+      {quotes.map((quote,index)=> (
         <ul key={quote.id+index}>
           <li>{quote.title}</li>
           <li> <img src={quote.url}

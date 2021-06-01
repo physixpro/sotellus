@@ -10,15 +10,16 @@ import {
   ThemeProvider,
 } from "@material-ui/core/styles";
 import { green, purple } from "@material-ui/core/colors";
+import Quotes from "./Quotes";
 
 toast.configure();
-const PostUser = () => {
-
+const PostUser = (props) => {
 
 
 /******** STATES **********/
 const[title,setTitle] = useState("");
 const[url,setUrl] = useState("");
+
 
 /********STATE FUNCTIONS *******/
 // const recordTitle = (e) => {
@@ -26,10 +27,10 @@ const[url,setUrl] = useState("");
 // console.log(e.target.value)
 // };
 
-const recordUrl = (e) => {
-setUrl(e.target.value);
-console.log(e.target.value)
-}
+// const recordUrl = (e) => {
+// setUrl(e.target.value);
+// console.log(e.target.value)
+// }
 
 
   
@@ -112,22 +113,31 @@ e.preventDefault();
         title: title,
         url: url
     };
+  // POST request
   const res = await axios.post(
     "https://jsonplaceholder.typicode.com/photos",
     newUser
   );
-    console.log(res)
+    // In the console in the browser data.[whatever] is this
+    // 1) grab the object from the response
+    // 2) take component state and update it
+    // 3) Specifically: Take the object and append it to the Array
+    // example: Array.concat(newObject) OR [...existingArray, newObject] <-- that's what you set the new updated state to be
+    console.log(res.data)
+    props.acceptNewQuote(res.data) //KATSU!!!!
     setTitle("");
     setUrl("");
 };
 
   return (
-    <form onSubmit={createUser}>
+    <div>
+<form onSubmit={createUser}>
         <div className="form-group">
         <TextField label="Title" type="text" name="name" id="title" placeholder="Title" onChange={e => setTitle(e.target.value)} value={title}/> 
         </div>
         <div className="form-group">
         <TextField label="Url" type="text" name="url" id="url" placeholder="url" onChange={e => setUrl(e.target.value)} value={url}/> 
+        </div>
 
         <ThemeProvider theme={theme}>
         <Button onClick={notify}  type="submit" variant="contained" color="primary" className={classes.margin}>
@@ -135,10 +145,12 @@ e.preventDefault();
         </Button>
       </ThemeProvider>
 
-        </div>
-
-
+     
     </form>
+
+
+    </div>
+    
         
        
      
