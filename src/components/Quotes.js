@@ -1,5 +1,8 @@
 import React, { useState, useEffect } from "react";
 import PostUser from "../components/PostUser";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import { Button,TextField } from "@material-ui/core";
 import axios from "axios";
 
 
@@ -23,10 +26,14 @@ const Quotes = () => {
   const [quotes, setQuotes] = useState([]);
 
  const acceptNewQuote = (newQuote) => {
-   // setQuotes automatically triggers a re-render in React
+   // setQuotes automatically triggers a re-render in React, I have to remember this ,I keep forgetting. DONT BE STUPID!
     setQuotes([...quotes, newQuote])
   }
 
+
+  const deleteNotification = () => {
+    toast.error("User Successfully Deleted!");
+  };
   return (
     <div>
        <PostUser acceptNewQuote={acceptNewQuote} />
@@ -38,7 +45,11 @@ const Quotes = () => {
           <li>{quote.title}</li>
           <li> <img src={quote.url}
            alt="" /></li>
+
+<Button onClick={deleteNotification}>Delete User</Button>
         </ul>
+
+        
         
       ))}
       
