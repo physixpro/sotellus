@@ -2,6 +2,7 @@ import './App.css';
 import React, {useState} from 'react';
 import LoginForm from "./components/LoginForm";
 import Quotes from "./components/Quotes";
+import PostUser from "./components/PostUser";
 
 
 function App() {
@@ -36,6 +37,7 @@ function App() {
     <div className="App">
    {(user.email != "") ? (
      <div className="welcome">
+       <PostUser />
        <h2>Welcome, <span>{user.name}</span></h2>
 
        <Quotes />

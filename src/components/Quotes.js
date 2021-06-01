@@ -1,8 +1,11 @@
 import React, { useState, useEffect } from "react";
-
 import axios from "axios";
 
+
 const Quotes = () => {
+
+
+
   useEffect(() => {
     const getQuotes = async () => {
       const res = await axios.get(
@@ -30,6 +33,7 @@ const Quotes = () => {
           <li> <img src={quote.url}
            alt="" /></li>
         </ul>
+        
       ))}
       
     </div>
