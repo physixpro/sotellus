@@ -21,10 +21,10 @@ const[title,setTitle] = useState("");
 const[url,setUrl] = useState("");
 
 /********STATE FUNCTIONS *******/
-const recordTitle = (e) => {
-setTitle(e.target.value);
-console.log(e.target.value)
-};
+// const recordTitle = (e) => {
+// setTitle(e.target.value);
+// console.log(e.target.value)
+// };
 
 const recordUrl = (e) => {
 setUrl(e.target.value);
@@ -32,24 +32,9 @@ console.log(e.target.value)
 }
 
 
-  useEffect(() => {
-    const createUser = async () => {
-
-
-        const newUser = {
-            title: title,
-            url: url
-        };
-        
-      const res = await axios.post(
-        "https://jsonplaceholder.typicode.com/photos",
-        newUser
-      );
-      res
-        .then((data) => console.log("Post Request"))
-        .catch((error) => console.log(error));
-    };
-  });
+  
+    
+  
 
   const notify = () => {
     toast("New User Successfully Created");
@@ -116,20 +101,42 @@ console.log(e.target.value)
   });
 
   const classes = useStyles();
+
+
+
+
+
+  const createUser = async (e) => {
+e.preventDefault();
+    const newUser = {
+        title: title,
+        url: url
+    };
+  const res = await axios.post(
+    "https://jsonplaceholder.typicode.com/photos",
+    newUser
+  );
+    console.log(res)
+    setTitle("");
+    setUrl("");
+};
+
   return (
     <form onSubmit={createUser}>
         <div className="form-group">
-        <TextField label="Title" type="text" name="name" id="title" placeholder="Title" onChange={recordTitle} value={title}/> 
+        <TextField label="Title" type="text" name="name" id="title" placeholder="Title" onChange={e => setTitle(e.target.value)} value={title}/> 
         </div>
         <div className="form-group">
-        <TextField label="Url" type="text" name="url" id="url" placeholder="url" onChange={recordUrl} value={url}/> 
-        </div>
+        <TextField label="Url" type="text" name="url" id="url" placeholder="url" onChange={e => setUrl(e.target.value)} value={url}/> 
 
-<ThemeProvider theme={theme}>
-        <Button onClick={notify}  type={submit} variant="contained" color="primary" className={classes.margin}>
+        <ThemeProvider theme={theme}>
+        <Button onClick={notify}  type="submit" variant="contained" color="primary" className={classes.margin}>
           Create New User
         </Button>
       </ThemeProvider>
+
+        </div>
+
 
     </form>
         

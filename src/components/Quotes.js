@@ -27,7 +27,7 @@ const Quotes = () => {
        <h1 className="quotes">
         Good Morning! Here's your daily dose of everything that is football.
       </h1>
-      {quotes.slice(0,5).map((quote,index)=> (
+      {quotes.slice(0,4).map((quote,index)=> (
         <ul key={quote.id+index}>
           <li>{quote.title}</li>
           <li> <img src={quote.url}
