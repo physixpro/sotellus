@@ -189,8 +189,12 @@ const Quotes = (props) => {
                   </Button>
                 </CardActions>
               </Card>
+              
             ))}
           </section>
+          <footer>
+      &copy; Copyright 2021 Keagan St. Rose Enterprises
+      </footer>
         </div>
       )}
     </div>

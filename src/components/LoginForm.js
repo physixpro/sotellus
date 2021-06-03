@@ -94,6 +94,9 @@ const LoginForm = ({ Login, error }) => {
           </Button>
         </form>
       </div>
+      <footer>
+      &copy; Copyright 2021 Keagan St. Rose Enterprises
+      </footer>
     </Container>
   );
 };
