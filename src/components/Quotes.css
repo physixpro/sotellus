@@ -1,0 +1,31 @@
+.quotesContainer {
+  margin-top: 3em;
+}
+
+.quoteGrid {
+  display: grid;
+  padding: 30px;
+  grid-template-columns: 1fr;
+  column-gap: 30px;
+  row-gap: 30px;
+  justify-items: center;
+}
+@media only screen and (min-width: 800px) {
+  .quoteGrid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+@media only screen and (min-width: 1200px) {
+  .quoteGrid {
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+}
+@media only screen and (min-width: 1600px) {
+  .quoteGrid {
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+  }
+}
+
+.deleteBtn {
+  margin-left: auto;
+}

@@ -1,50 +1,65 @@
-import './App.css';
-import React, {useState} from 'react';
+import React, { useState } from "react";
 import LoginForm from "./components/LoginForm";
 import Quotes from "./components/Quotes";
+import "./App.css";
+import { Button } from "@material-ui/core";
+import { makeStyles } from "@material-ui/core/styles";
 
+const useStyles = makeStyles({
+  logoutButton: {
+    display: "block",
+    margin: "3em 1em 1em auto",
+  },
+});
 
 function App() {
   const adminUser = {
     email: "admin@admin.com",
-    password: "123"
-  }
+    password: "123",
+  };
 
-  const[user,setUser]=useState({name:"",email:""});
-  const[error,setError]=useState("");
+  const classes = useStyles();
 
-  const Login = details => {
-    console.log(details);
+  const [user, setUser] = useState({ email: "" });
+  const [error, setError] = useState("");
 
-    if (details.email== adminUser.email && details.password == adminUser.password){
-    console.log("Logged in!");
-    setUser({
-      name: details.name,
-      email: details.email
-    });
-  } else {
-    console.log("details do not match!")
-    setError("Details do not match!")
-  }
-  }
+  const Login = (details) => {
+    if (
+      details.email == adminUser.email &&
+      details.password == adminUser.password
+    ) {
+      setUser({
+        email: details.email,
+      });
+    } else {
+      setError("Details do not match!");
+    }
+  };
 
   const Logout = () => {
-    setUser({name:"", email:""});
-  }
+    setUser({ email: "" });
+  };
 
   return (
     <div className="App">
-   {(user.email != "") ? (
-     <div className="welcome">
-       <h2>Welcome, <span>{user.name}</span></h2>
-
-       <Quotes />
-
-       <button onClick = {Logout}>Logout</button>
-     </div>
-   ) : (
-     <LoginForm Login={Login} error={error}/>
-   )}
+      {user.email != "" ? (
+        <div className="welcome">
+          <Button
+            classes={classes.logoutButton}
+            size="medium"
+            color="primary"
+            onClick={Logout}
+            variant="contained"
+            color="primary"
+            color="secondary"
+          >
+            Logout
+          </Button>
+          <Quotes />
+        </div>
+      ) : (
+        <LoginForm Login={Login} error={error} />
+      )}
     </div>
   );
 }

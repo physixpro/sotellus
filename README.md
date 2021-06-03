@@ -12,9 +12,9 @@ title: "keagan e.g.",
 
 
 
-          DELETE REQUEST 
+          DELETE REQUESe 
 
-          1. read array methods for delete request (splice and sliceP)
+          1. read array methods for delete request (splice and slice)
 
 
 
