@@ -15,6 +15,10 @@ import Typography from "@material-ui/core/Typography";
 import { makeStyles } from "@material-ui/core/styles";
 import { LoremIpsum } from "lorem-ipsum";
 import "./Quotes.css";
+import AppBar from '@material-ui/core/AppBar';
+import Toolbar from '@material-ui/core/Toolbar';
+import IconButton from '@material-ui/core/IconButton';
+import MenuIcon from '@material-ui/icons/Menu';
 const useStyles = makeStyles({
   root: {
     maxWidth: 345,
@@ -28,10 +32,12 @@ const useStyles = makeStyles({
   },
   body: {
     height: 80,
+    top:"100px;"
   },
   createButton: {
     display: "block",
     margin: "0 auto",
+    top:"100px"
   },
 });
 
@@ -46,7 +52,7 @@ const lorem = new LoremIpsum({
   },
 });
 
-const Quotes = () => {
+const Quotes = (props) => {
   const classes = useStyles();
   const [quotes, setQuotes] = useState([]);
   const [isShowCreatePost, setIsShowCreatePost] = useState(false);
@@ -88,7 +94,29 @@ const Quotes = () => {
   };
 
   return (
+    
     <div className="quotesContainer">
+
+<AppBar position="fixed">
+  <Toolbar>
+    <IconButton edge="start" className={classes.menuButton} color="inherit" aria-label="menu">
+      <MenuIcon />
+    </IconButton>
+    
+  
+    <Button
+            classes={classes.logoutButton}
+            size="medium"
+            color="primary"
+            onClick={props.Logout}
+            variant="contained"
+            color="primary"
+            color="secondary"
+          >
+            Logout
+          </Button>
+  </Toolbar>
+</AppBar>
       {isShowCreatePost && (
         <div className="createPostContainer">
           <Button

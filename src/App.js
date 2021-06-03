@@ -8,7 +8,7 @@ import { makeStyles } from "@material-ui/core/styles";
 const useStyles = makeStyles({
   logoutButton: {
     display: "block",
-    margin: "3em 1em 1em auto",
+    margin: "3em 1em 0auto",
   },
 });
 
@@ -44,18 +44,8 @@ function App() {
     <div className="App">
       {user.email != "" ? (
         <div className="welcome">
-          <Button
-            classes={classes.logoutButton}
-            size="medium"
-            color="primary"
-            onClick={Logout}
-            variant="contained"
-            color="primary"
-            color="secondary"
-          >
-            Logout
-          </Button>
-          <Quotes />
+        
+          <Quotes Logout={Logout}/>
         </div>
       ) : (
         <LoginForm Login={Login} error={error} />
