@@ -15,10 +15,10 @@ import Typography from "@material-ui/core/Typography";
 import { makeStyles } from "@material-ui/core/styles";
 import { LoremIpsum } from "lorem-ipsum";
 import "./Quotes.css";
-import AppBar from '@material-ui/core/AppBar';
-import Toolbar from '@material-ui/core/Toolbar';
-import IconButton from '@material-ui/core/IconButton';
-import MenuIcon from '@material-ui/icons/Menu';
+import AppBar from "@material-ui/core/AppBar";
+import Toolbar from "@material-ui/core/Toolbar";
+import IconButton from "@material-ui/core/IconButton";
+import MenuIcon from "@material-ui/icons/Menu";
 const useStyles = makeStyles({
   root: {
     maxWidth: 345,
@@ -32,12 +32,12 @@ const useStyles = makeStyles({
   },
   body: {
     height: 80,
-    top:"100px;"
+    top: "100px;",
   },
   createButton: {
     display: "block",
     margin: "0 auto",
-    top:"50px"
+    top: "50px",
   },
 });
 
@@ -77,6 +77,7 @@ const Quotes = (props) => {
     setQuotes([...quotes, newQuote]);
   };
 
+  // Delete Request
   const deleteEntry = async (currentId) => {
     let res = null;
     try {
@@ -85,7 +86,6 @@ const Quotes = (props) => {
       );
       toast.success("Deleted Successfully");
     } catch (error) {
-      console.log("error", error);
       toast.error("Deletion Failed");
     }
 
@@ -93,18 +93,34 @@ const Quotes = (props) => {
     setQuotes(quotes.filter((quote) => quote.id !== currentId));
   };
 
-  return (
-    
-    <div className="quotesContainer">
+  //Put Request 
+  const editEntry = async (currentId) => {
+    let res = null;
+    try{
+      res = await axios.put(`https://jsonplaceholder.typicode.com/photos/${currentId}`
+      );
+      toast.success("Edit Successful");
+      console.log(res)
+    } catch (error) {
+toast.error("Edit Unsuccessful");
+    }
+   
+  }
 
-<AppBar position="fixed">
-  <Toolbar>
-    <IconButton edge="start" className={classes.menuButton} color="inherit" aria-label="menu">
-      <MenuIcon />
-    </IconButton>
-    
-  
-    <Button
+  return (
+    <div className="quotesContainer">
+      <AppBar position="fixed">
+        <Toolbar>
+          <IconButton
+            edge="start"
+            className={classes.menuButton}
+            color="inherit"
+            aria-label="menu"
+          >
+            <MenuIcon />
+          </IconButton>
+
+          <Button
             classes={classes.logoutButton}
             size="medium"
             color="primary"
@@ -115,8 +131,8 @@ const Quotes = (props) => {
           >
             Logout
           </Button>
-  </Toolbar>
-</AppBar>
+        </Toolbar>
+      </AppBar>
       {isShowCreatePost && (
         <div className="createPostContainer">
           <Button
@@ -187,14 +203,22 @@ const Quotes = (props) => {
                   >
                     Delete Entry
                   </Button>
+                  <Button
+                    className="deleteBtn"
+                    size="small"
+                    color="primary"
+                    onClick={() => editEntry(quote.id)}
+                    variant="contained"
+                    color="primary"
+                    endIcon={<DeleteIcon />}
+                  >
+                    Edit Card
+                  </Button>
                 </CardActions>
               </Card>
-              
             ))}
           </section>
-          <footer>
-      &copy; Copyright 2021 Keagan St. Rose Enterprises
-      </footer>
+          <footer>&copy; Copyright 2021 Keagan St. Rose enterprises</footer>
         </div>
       )}
     </div>
