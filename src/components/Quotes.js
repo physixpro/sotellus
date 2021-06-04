@@ -218,7 +218,7 @@ toast.error("Edit Unsuccessful");
               </Card>
             ))}
           </section>
-          <footer>&copy; Copyright 2021 Keagan St. Rose enterprises</footer>
+          <footer>&copy; Copyright 2021 Keagan St. Rose enterprises Limited</footer>
         </div>
       )}
     </div>
