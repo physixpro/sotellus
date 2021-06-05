@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import CreatePost from "../components/CreatePost";
+import EditPost from "../components/EditPost"
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { Button, TextField } from "@material-ui/core";
@@ -57,10 +58,15 @@ const Quotes = (props) => {
   const classes = useStyles();
   const [quotes, setQuotes] = useState([]);
   const [isShowCreatePost, setIsShowCreatePost] = useState(false);
+  const[isShowEditPost,setIsShowEditPost] = useState(false);
 
   const toggleCreatePost = () => {
     setIsShowCreatePost(!isShowCreatePost);
   };
+
+  const toggleEditPost = () => {
+    setIsShowEditPost(!isShowEditPost);
+  }
 
   useEffect(() => {
     const getQuotes = async () => {
@@ -137,6 +143,9 @@ toast.error("Edit Unsuccessful");
           </Button>
         </Toolbar>
       </AppBar>
+
+
+      {/* THIS IS  WHERE WE LINK STATE TO THE CREATE COMPONENT */}
       {isShowCreatePost && (
         <div className="createPostContainer">
           <Button
@@ -148,14 +157,35 @@ toast.error("Edit Unsuccessful");
           >
             Show Posts
           </Button>
+         
           <CreatePost
             acceptNewQuote={acceptNewQuote}
             setIsShowCreatePost={setIsShowCreatePost}
-          />
-        </div>
+          />      
+ </div>
       )}
+       {/* THIS IS  WHERE WE LINK STATE TO THE EDIT  COMPONENT */}
+{isShowEditPost && (
+  <div className="createPostContainer">
+          <Button
+            size="large"
+            color="primary"
+            variant="contained"
+            onClick={toggleEditPost}
+            className={classes.createButton}
+          >
+            Show Posts
+          </Button>
+         
+          <EditPost
+            acceptNewQuote={acceptNewQuote}
+            setIsShowEditPost={setIsShowEditPost}
+          />      
+ </div>
+)}
 
-      {!isShowCreatePost && (
+
+      {!isShowCreatePost & !isShowEditPost && (
         <div>
           <Button
             size="large"
@@ -207,12 +237,12 @@ toast.error("Edit Unsuccessful");
                   >
                     Delete Entry
                   </Button>
-        
+       
                   <Button
                     className="deleteBtn"
                     size="small"
                     color="primary"
-                    onClick={toggleCreatePost}
+                    onClick={toggleEditPost}
                     variant="contained"
                     color="primary"
                     endIcon={<EditIcon />}

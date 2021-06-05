@@ -33,7 +33,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const EditPost = () => {
+const EditPost = (props) => {
  const[title,setTitle] = useState("");
  const[url, setUrl] = useState("");
  const classes = useStyles();
@@ -46,7 +46,7 @@ const EditPost = () => {
      };
      //Edit Request
      const res = await axios.put("https://jsonplaceholder.typicode.com/photos",
-     newEdit
+     newInput
     
      );
      props.acceptNewQuote(res.data); //KATSU!!!!
@@ -56,61 +56,63 @@ const EditPost = () => {
     setUrl("");
 console.log(res)
  }
+ return(
+   
+  <Container component="main" maxWidth="xs">
+    <CssBaseline />
+    <div className={classes.paper}>
+      <Avatar className={classes.avatar}>
+        <PostAddIcon />
+      </Avatar>
+      <Typography component="h1" variant="h5">
+        Edit Current Post
+      </Typography>
+      <form className={classes.form} noValidate onSubmit={editPost}>
+        <TextField
+          variant="outlined"
+          margin="normal"
+          required
+          fullWidth
+          autoFocus
+          label="Title"
+          type="text"
+          name="name"
+          id="title"
+          placeholder="Title"
+          onChange={(e) => setTitle(e.target.value)}
+          value={title}
+        />
+        <TextField
+          variant="outlined"
+          margin="normal"
+          required
+          fullWidth
+          id="password"
+          label="Url"
+          type="text"
+          name="url"
+          id="url"
+          placeholder="url"
+          onChange={(e) => setUrl(e.target.value)}
+          value={url}
+        />
+
+        <Button
+          type="submit"
+          fullWidth
+          variant="contained"
+          color="primary"
+          className={classes.submit}
+        >
+          Edit New Post
+        </Button>
+      </form>
+    </div>
+  </Container>
+)
+
 };
 
-return(
-    <Container component="main" maxWidth="xs">
-      <CssBaseline />
-      <div className={classes.paper}>
-        <Avatar className={classes.avatar}>
-          <PostAddIcon />
-        </Avatar>
-        <Typography component="h1" variant="h5">
-          Submit a New Post
-        </Typography>
-        <form className={classes.form} noValidate onSubmit={createPost}>
-          <TextField
-            variant="outlined"
-            margin="normal"
-            required
-            fullWidth
-            autoFocus
-            label="Title"
-            type="text"
-            name="name"
-            id="title"
-            placeholder="Title"
-            onChange={(e) => setTitle(e.target.value)}
-            value={title}
-          />
-          <TextField
-            variant="outlined"
-            margin="normal"
-            required
-            fullWidth
-            id="password"
-            label="Url"
-            type="text"
-            name="url"
-            id="url"
-            placeholder="url"
-            onChange={(e) => setUrl(e.target.value)}
-            value={url}
-          />
-
-          <Button
-            type="submit"
-            fullWidth
-            variant="contained"
-            color="primary"
-            className={classes.submit}
-          >
-            Edit New Post
-          </Button>
-        </form>
-      </div>
-    </Container>
-)
 
 
 export default EditPost;
