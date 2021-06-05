@@ -19,6 +19,7 @@ import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
 import IconButton from "@material-ui/core/IconButton";
 import MenuIcon from "@material-ui/icons/Menu";
+import EditIcon from '@material-ui/icons/Edit';
 const useStyles = makeStyles({
   root: {
     maxWidth: 345,
@@ -106,6 +107,9 @@ toast.error("Edit Unsuccessful");
     }
    
   }
+
+  //Edit Request
+  
 
   return (
     <div className="quotesContainer">
@@ -210,7 +214,7 @@ toast.error("Edit Unsuccessful");
                     onClick={() => editEntry(quote.id)}
                     variant="contained"
                     color="primary"
-                    endIcon={<DeleteIcon />}
+                    endIcon={<EditIcon />}
                   >
                     Edit Card
                   </Button>
@@ -218,7 +222,7 @@ toast.error("Edit Unsuccessful");
               </Card>
             ))}
           </section>
-          <footer>&copy; Copyright 2021 Keagan St. Rose enterprises Limited</footer>
+          <footer>&copy; Copyright 2021 Keagan St. Rose Enterprises Limited</footer>
         </div>
       )}
     </div>
