@@ -207,11 +207,12 @@ toast.error("Edit Unsuccessful");
                   >
                     Delete Entry
                   </Button>
+        
                   <Button
                     className="deleteBtn"
                     size="small"
                     color="primary"
-                    onClick={() => editEntry(quote.id)}
+                    onClick={toggleCreatePost}
                     variant="contained"
                     color="primary"
                     endIcon={<EditIcon />}

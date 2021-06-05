@@ -115,6 +115,7 @@ const CreatePost = (props) => {
           >
             Create New Post
           </Button>
+          
         </form>
       </div>
     </Container>
