@@ -4,6 +4,7 @@ import Quotes from "./components/Quotes";
 import "./App.css";
 import { Button } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
+import StorageTest from "./components/StorageTest";
 
 
 const useStyles = makeStyles({
@@ -51,6 +52,7 @@ function App() {
       ) : (
         <LoginForm Login={Login} error={error} />
       )}
+      {/* <StorageTest /> */}
     </div>
   );
 }

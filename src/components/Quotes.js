@@ -101,18 +101,8 @@ const Quotes = (props) => {
   };
 
   //Put Request 
-  const editEntry = async (currentId) => {
-    let res = null;
-    try{
-      res = await axios.put(`https://jsonplaceholder.typicode.com/photos/${currentId}`
-      );
-      toast.success("Edit Successful");
-      console.log(res)
-    } catch (error) {
-toast.error("Edit Unsuccessful");
-    }
+  
    
-  }
 
   //Edit Request
   

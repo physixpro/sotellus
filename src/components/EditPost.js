@@ -65,7 +65,7 @@ console.log(res)
         <PostAddIcon />
       </Avatar>
       <Typography component="h1" variant="h5">
-        Edit Current Post
+        Edit Post
       </Typography>
       <form className={classes.form} noValidate onSubmit={editPost}>
         <TextField

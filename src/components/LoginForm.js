@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Avatar from "@material-ui/core/Avatar";
 import Button from "@material-ui/core/Button";
 import CssBaseline from "@material-ui/core/CssBaseline";
@@ -14,7 +14,16 @@ import { makeStyles } from "@material-ui/core/styles";
 import Container from "@material-ui/core/Container";
 
 const LoginForm = ({ Login, error }) => {
-  const [details, setDetails] = useState({ name: "", email: "", password: "" });
+  // const [details, setDetails] = useState({ name: "", email: "", password: "" });
+  const[details,setDetails] = useState(
+    localStorage.getItem("myValueInLocalStorage") || { name: "", email: "", password: "" }
+  );
+
+  useEffect(() => {
+    localStorage.setItem("myValueInLocalStorage", details)
+  },[details])
+
+  
 
   const submitHandler = (e) => {
     e.preventDefault();
