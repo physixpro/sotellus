@@ -52,7 +52,7 @@ function App() {
       ) : (
         <LoginForm Login={Login} error={error} />
       )}
-      {/* <StorageTest /> */}
+      <StorageTest />
     </div>
   );
 }

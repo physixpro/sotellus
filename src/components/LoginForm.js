@@ -30,6 +30,18 @@ const LoginForm = ({ Login, error }) => {
     Login(details);
   };
 
+  //record email
+  const recordEmail = (e) => {
+    setDetails({ ...details, email: e.target.value })
+    console.log(e.target.value)
+  }
+
+  //record password
+  const recordPassword = (e) => {
+    setDetails({ ...details, password: e.target.value})
+    console.log(e.target.value)
+  }
+
   const useStyles = makeStyles((theme) => ({
     paper: {
       marginTop: theme.spacing(8),
@@ -73,7 +85,8 @@ const LoginForm = ({ Login, error }) => {
             name="email"
             autoComplete="email"
             autoFocus
-            onChange={(e) => setDetails({ ...details, email: e.target.value })}
+            onChange={recordEmail}
+            // onChange={(e) => setDetails({ ...details, email: e.target.value })}
             value={details.email}
           />
           <TextField
@@ -86,9 +99,10 @@ const LoginForm = ({ Login, error }) => {
             type="password"
             id="password"
             autoComplete="current-password"
-            onChange={(e) =>
-              setDetails({ ...details, password: e.target.value })
-            }
+            onChange={recordPassword}
+            // onChange={(e) =>
+            //   setDetails({ ...details, password: e.target.value })
+            // }
             value={details.password}
           />
 
