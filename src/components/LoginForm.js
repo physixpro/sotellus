@@ -88,7 +88,7 @@ const LoginForm = ({ Login, error }) => {
             onChange={recordEmail}
             // onChange={(e) => setDetails({ ...details, email: e.target.value })}
             // value={details.email}
-            value={details}
+            value={details.recordEmail}
           />
           <TextField
             variant="outlined"
