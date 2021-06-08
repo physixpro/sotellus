@@ -20,8 +20,8 @@ const LoginForm = ({ Login, error }) => {
   );
 
   useEffect(() => {
-    localStorage.setItem("myValueInLocalStorage", details)
-  },[details])
+    localStorage.setItem("myValueInLocalStorage", details.email)
+  },[details.email])
 
   
 
@@ -87,7 +87,8 @@ const LoginForm = ({ Login, error }) => {
             autoFocus
             onChange={recordEmail}
             // onChange={(e) => setDetails({ ...details, email: e.target.value })}
-            value={details.email}
+            // value={details.email}
+            value={details}
           />
           <TextField
             variant="outlined"
@@ -103,7 +104,8 @@ const LoginForm = ({ Login, error }) => {
             // onChange={(e) =>
             //   setDetails({ ...details, password: e.target.value })
             // }
-            value={details.password}
+            // value={details.password}
+            value={recordPassword.password}
           />
 
           <Button
